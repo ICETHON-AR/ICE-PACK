@@ -1,7 +1,7 @@
-FROM TELETHON-AR/ICE-PACK:alpine
+FROM ICETHON-AR/ICE-PACK:alpine
 
 #clonning repo 
-RUN git clone https://github.com/TELETHON-AR/ICE-PACK.git /root/userbot
+RUN git clone https://github.com/ICETHON-AR/ICE-PACK.git /root/userbot
 #working directory 
 WORKDIR /root/userbot
 
