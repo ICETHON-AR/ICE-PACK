@@ -1,4 +1,3 @@
-
 import html
 
 from telethon.tl import functions
@@ -11,18 +10,14 @@ from . import (
     BOTLOG,
     BOTLOG_CHATID,
     DEFAULT_BIO,
-    ice16,
     edit_delete,
     get_user_from_event,
+    ice16,
 )
 
 plugin_category = "utils"
 DEFAULTUSER = str(AUTONAME) if AUTONAME else str(ALIVE_NAME)
-DEFAULTUSERBIO = (
-    str(DEFAULT_BIO)
-    if DEFAULT_BIO
-    else "الـحمد لله عـلى كـل شـيء"
-)
+DEFAULTUSERBIO = str(DEFAULT_BIO) if DEFAULT_BIO else "الـحمد لله عـلى كـل شـيء"
 
 
 @ice16.ar_cmd(
@@ -91,5 +86,5 @@ async def _(event):
     await edit_delete(event, "⌔︙ تـم اعـادة الـحساب بـنجاح ✅")
     if BOTLOG:
         await event.client.send_message(
-            BOTLOG_CHATID, f"⌔︙ تـم اعادة الـحساب الى وضـعه الاصلـي ✅")
-       
+            BOTLOG_CHATID, f"⌔︙ تـم اعادة الـحساب الى وضـعه الاصلـي ✅"
+        )

@@ -77,7 +77,7 @@ async def time_func(tdata):
             f"⌔︙ الـساعة الآن {dt.now().strftime(t_form)}\n⌔︙ تـاريـخ اليوم{dt.now().strftime(d_form)}",
         )
     if not timezones:
-        return await edit_or_reply(tdata,  "⌔︙ الـبلد غير صالح")
+        return await edit_or_reply(tdata, "⌔︙ الـبلد غير صالح")
     if len(timezones) == 1:
         time_zone = timezones[0]
     elif len(timezones) > 1:
@@ -110,7 +110,8 @@ async def time_func(tdata):
             f"({time_zone} timezone).`",
         )
 
-#كـتابة  @ICE50
+
+# كـتابة  @ICE50
 @ICE16.ar_cmd(
     pattern="الوقت(?:\s|$)([\s\S]*)",
     command=("الوقت", plugin_category),

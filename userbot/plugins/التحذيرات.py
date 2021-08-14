@@ -10,6 +10,7 @@ plugin_category = "admin"
 # Copyright (C) 2021 ICE16 TEAM
 # FILES WRITTEN BY  @ICE50
 
+
 @ICE16.ar_cmd(
     pattern="تحذير(?:\s|$)([\s\S]*)",
     command=("تحذير", plugin_category),
@@ -48,7 +49,10 @@ async def _(event):
         if warn_reason:
             reply += "\nسبـب أخـر تحـذير:\n{}".format(html.escape(warn_reason))
     await edit_or_reply(event, reply)
-#ملف التحذيرات بواسطه آيس
+
+
+# ملف التحذيرات بواسطه آيس
+
 
 @ICE16.ar_cmd(
     pattern="التحذيرات",

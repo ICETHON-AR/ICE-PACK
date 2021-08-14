@@ -1,6 +1,5 @@
 # Copyright (C) 2021 ICE16 TEAM
 # FILES WRITTEN BY  @ICE50
-import os
 import re
 
 from telethon import Button
@@ -10,6 +9,7 @@ from . import ICE16, edit_delete, reply_id
 
 plugin_category = "tools"
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
+
 
 @ICE16.ar_cmd(
     pattern="لستة(?: |$)(.*)",

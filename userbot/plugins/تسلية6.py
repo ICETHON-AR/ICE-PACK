@@ -11,18 +11,10 @@ from userbot import ICE16
 
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.utils import reply_id
-from . import (
-    changemymind,
-    deEmojify,
-    fakegs,
-    kannagen,
-    moditweet,
-    reply_id,
-    trumptweet,
-    tweets,
-)
+from . import changemymind, deEmojify, kannagen, moditweet, reply_id, trumptweet, tweets
 
 plugin_category = "fun"
+
 
 @ICE16.ar_cmd(
     pattern="ترامب(?:\s|$)([\s\S]*)",

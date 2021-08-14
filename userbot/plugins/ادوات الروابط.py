@@ -1,5 +1,3 @@
-
-
 import requests
 from validators.url import url
 
@@ -40,11 +38,10 @@ async def _(event):
     if response_api:
         await edit_or_reply(event, f"الـ دي أن اس لـ {input_str} هي \n\n{response_api}")
     else:
-        await edit_or_reply(
-            event, f"⌔︙ - لم استطع ايجاد `{input_str}` في الانترنت"
-        )
+        await edit_or_reply(event, f"⌔︙ - لم استطع ايجاد `{input_str}` في الانترنت")
 
-# urltools for ice16 
+
+# urltools for ice16
 @ice16.ar_cmd(
     pattern="مصغر(?:\s|$)([\s\S]*)",
     command=("مصغر", plugin_category),
@@ -81,8 +78,10 @@ async def _(event):
     else:
         await edit_or_reply(event, "⌔︙  هـنالك شي خطـا حاول لاحقـا")
 
+
 # urltools for ice16
-  
+
+
 @ice16.ar_cmd(
     pattern="اخفاء(?:\s|$)([\s\S]*)",
     command=("اخفاء", plugin_category),

@@ -1,14 +1,14 @@
-#ترجمه فريق آيس على التيلكرام
+# ترجمه فريق آيس على التيلكرام
 import json
 
 import requests
-#ترجمه فريق آيس على التيلكرام
-from ..sql_helper.globals import gvarstatus
+
+# ترجمه فريق آيس على التيلكرام
 from . import ICE16, edit_delete, edit_or_reply
 
 plugin_category = "extra"
 
-#ترجمه فريق آيس على التيلكرام
+# ترجمه فريق آيس على التيلكرام
 @ICE16.ar_cmd(
     pattern="صلاة(?: |$)(.*)",
     command=("صلاة", plugin_category),
@@ -25,8 +25,10 @@ async def get_adzan(adzan):
     request = requests.get(url)
     if request.status_code != 200:
         await edit_delete(
-            adzan, f"** لم يـتم العثور على معلومات لـهذه المدينه {LOKASI}**\n يرجى كتابة اسم محافظتك وباللغه الانكليزي ", 5
-        ) #ترجمه فريق آيس على التيلكرام
+            adzan,
+            f"** لم يـتم العثور على معلومات لـهذه المدينه {LOKASI}**\n يرجى كتابة اسم محافظتك وباللغه الانكليزي ",
+            5,
+        )  # ترجمه فريق آيس على التيلكرام
         return
     result = json.loads(request.text)
     ICE16result = f"<b>اوقـات صـلاه المـسلمين 👳‍♂️ </b>\
@@ -45,6 +47,7 @@ async def get_adzan(adzan):
             \n<b>منتـصف الليل : </b><i>{result['results']['datetime'][0]['times']['Midnight']}</i>\
     "
     await edit_or_reply(adzan, ICE16result, "html")
+
 
 # Copyright (C) 2021 ICE16 TEAM
 # FILES WRITTEN BY  @ICE50

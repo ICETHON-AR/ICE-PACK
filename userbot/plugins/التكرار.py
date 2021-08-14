@@ -6,8 +6,6 @@ from telethon.tl.functions.messages import GetStickerSetRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from telethon.utils import get_display_name
 
-from userbot import ice
-
 from ..core.managers import edit_delete, edit_or_reply
 from ..helpers.tools import media_type
 from ..helpers.utils import _catutils
@@ -17,7 +15,7 @@ plugin_category = "extra"
 
 
 async def spam_function(event, sandy, cat, sleeptimem, sleeptimet, DelaySpam=False):
-  
+
     counter = int(cat[0])
     if len(cat) == 2:
         spam_message = str(cat[1])
@@ -110,12 +108,15 @@ async def spam_function(event, sandy, cat, sleeptimem, sleeptimet, DelaySpam=Fal
     info={
         "header": "⌔︙ ملـئ النـص في الدردشـة مع عدد معيّن من المـرات ",
         "description": "⌔︙ إرسـال الوسائط/الرسائل التي تم الردّ عليها <عدد> مرّة في الدردشـة ",
-        "usage": ["{tr}<كرر <عدد> <الكلمه", "{tr}كرر الكلمه <عدد> الـرّد علـىٰ رسـالة "],
+        "usage": [
+            "{tr}<كرر <عدد> <الكلمه",
+            "{tr}كرر الكلمه <عدد> الـرّد علـىٰ رسـالة ",
+        ],
         "examples": "{tr}كرر 10 الكلمه",
     },
 )
 async def spammer(event):
-    "⌔︙ ملـئ النـص في الدردشـة "
+    "⌔︙ ملـئ النـص في الدردشـة"
     sandy = await event.get_reply_message()
     cat = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
     try:
@@ -157,7 +158,11 @@ async def stickerpack_spam(event):
             event, "**⌔︙ جاري إحضار تفاصيل حزمة الملصقات، يرجى الإنتظار قليلا  ⏱**"
         )
     except BaseException:
-        await edit_delete(event, "⌔︙ أعتقد أنّ هذا الملصق ليس جزءًا من أيّ حزمة لذا لا أستطيع إيجاد حزمته ⚠️", 5)
+        await edit_delete(
+            event,
+            "⌔︙ أعتقد أنّ هذا الملصق ليس جزءًا من أيّ حزمة لذا لا أستطيع إيجاد حزمته ⚠️",
+            5,
+        )
         return
     try:
         get_stickerset = await event.client(

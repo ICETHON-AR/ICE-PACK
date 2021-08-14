@@ -25,7 +25,7 @@ vlist = [
     "CUSTOM_STICKER_PACKNAME",
     "PING_PIC",
 ]
-#ملف التخصيص لسورس آيس
+# ملف التخصيص لسورس آيس
 oldvars = {
     "PM_PIC": "pmpermit_pic",
     "PM_TEXT": "pmpermit_txt",
@@ -65,7 +65,9 @@ async def bad(event):  # sourcery no-metrics
     vnlist = "".join(f"{i}. `{each}`\n" for i, each in enumerate(vlist, start=1))
     if not vname:
         return await edit_delete(
-            event, f"**📑 يجب وضع اسم المتغير الصحيح من هذه القائمه :\n\n**{vnlist}", time=60
+            event,
+            f"**📑 يجب وضع اسم المتغير الصحيح من هذه القائمه :\n\n**{vnlist}",
+            time=60,
         )
     vinfo = None
     if " " in vname:
@@ -84,10 +86,14 @@ async def bad(event):  # sourcery no-metrics
             check = vinfo.split(" ")
             for i in check:
                 if (("PIC" in vname) or ("pic" in vname)) and not url(i):
-                    return await edit_delete(event, "**قم بوضع رابط صحيح او وضع رابط تلكراف**")
+                    return await edit_delete(
+                        event, "**قم بوضع رابط صحيح او وضع رابط تلكراف**"
+                    )
             addgvar(vname, vinfo)
             await edit_delete(
-                event, f"📑 القيـمة لـ **{vname}** \n تـم تغييـرها لـ :- `{vinfo}`", time=20
+                event,
+                f"📑 القيـمة لـ **{vname}** \n تـم تغييـرها لـ :- `{vinfo}`",
+                time=20,
             )
         if cmd == "معلومات_":
             var_data = gvarstatus(vname)
@@ -103,9 +109,14 @@ async def bad(event):  # sourcery no-metrics
             )
     else:
         await edit_delete(
-            event, f"**📑 يـجب وضع المتغير الصحـيح من هذه الـقائمة :\n\n**{vnlist}", time=60
+            event,
+            f"**📑 يـجب وضع المتغير الصحـيح من هذه الـقائمة :\n\n**{vnlist}",
+            time=60,
         )
-#ملف التخصيص لسورس جمثون 
+
+
+# ملف التخصيص لسورس جمثون
+
 
 @ICE16.ar_cmd(
     pattern="تخصيص (pmpermit|pmpic|pmblock|startmsg)$",
@@ -197,10 +208,6 @@ async def custom_catuserbot(event):
         delgvar("pmpermit_pic")
     if input_str == "startmsg":
         if gvarstatus("START_TEXT") is None:
-            return await edit_delete(
-                event, "⌔︙ انت لم تقم بخصيص رسالة بدء بـوتك ❕"
-            )
+            return await edit_delete(event, "⌔︙ انت لم تقم بخصيص رسالة بدء بـوتك ❕")
         delgvar("START_TEXT")
-    await edit_or_reply(
-        event, f"⌔︙  تم بنجاح ازالة هذا التخصيص ✅"
-    )
+    await edit_or_reply(event, f"⌔︙  تم بنجاح ازالة هذا التخصيص ✅")

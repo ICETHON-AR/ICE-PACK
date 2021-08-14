@@ -47,4 +47,4 @@ if Config.PLUGIN_CHANNEL:
 
     ICE16.loop.create_task(install())
 
-#كـتابة  @ICE50
+# كـتابة  @ICE50

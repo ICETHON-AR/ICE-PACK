@@ -40,7 +40,8 @@ UNBAN_RIGHTS = ChatBannedRights(
 )
 
 
-#ARABIC CAT BY  @ICE50 
+# ARABIC CAT BY  @ICE50
+
 
 @ICE16.ar_cmd(
     pattern="حظر(?: |$)(.*)",
@@ -253,7 +254,9 @@ async def startgmute(event):
     try:
         user = (await event.client(GetFullUserRequest(userid))).user
     except Exception:
-        return await edit_or_reply(event, "⌔︙ اسف انا غير قادر ع حظـر او كتم المستخدم ⚠️")
+        return await edit_or_reply(
+            event, "⌔︙ اسف انا غير قادر ع حظـر او كتم المستخدم ⚠️"
+        )
     if is_muted(userid, "gmute"):
         return await edit_or_reply(
             event,
@@ -319,7 +322,9 @@ async def endgmute(event):
     try:
         user = (await event.client(GetFullUserRequest(userid))).user
     except Exception:
-        return await edit_or_reply(event, "**⌔︙ آسف أنا غير قادر على حظـر المستخدم ⚠️**")
+        return await edit_or_reply(
+            event, "**⌔︙ آسف أنا غير قادر على حظـر المستخدم ⚠️**"
+        )
 
     if not is_muted(userid, "gmute"):
         return await edit_or_reply(

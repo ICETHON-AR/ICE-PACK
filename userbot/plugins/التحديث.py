@@ -8,7 +8,7 @@ import urllib3
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
-from userbot import HEROKU_APP, UPSTREAM_REPO_URL, ICE16
+from userbot import HEROKU_APP, ICE16, UPSTREAM_REPO_URL
 
 from ..Config import Config
 from ..core.logger import logging
@@ -203,7 +203,9 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
 async def upstream(event):
     "To check if the bot is up to date and update if specified"
     conf = event.pattern_match.group(1).strip()
-    event = await edit_or_reply(event, "**⌔︙ يـتـم البـحـث عـن تـحديثـات سـورس آيس انـتـظـر**")
+    event = await edit_or_reply(
+        event, "**⌔︙ يـتـم البـحـث عـن تـحديثـات سـورس آيس انـتـظـر**"
+    )
     off_repo = UPSTREAM_REPO_URL
     force_update = False
     if HEROKU_API_KEY is None or HEROKU_APP_NAME is None:
@@ -255,16 +257,13 @@ async def upstream(event):
     # Special case for deploy
     if changelog == "" and not force_update:
         await event.edit(
-            "**⌔︙ سورس آيس محدث الى اخر اصدار **\n"
-            f"**قـنـاة سـورس آيس** : @ICE16"
+            "**⌔︙ سورس آيس محدث الى اخر اصدار **\n" f"**قـنـاة سـورس آيس** : @ICE16"
         )
         return repo.__del__()
     if conf == "" and not force_update:
         await print_changelogs(event, ac_br, changelog)
         await event.delete()
-        return await event.respond(
-            f"⌔ :  لتحديث سورس آيس ارسل : `.تحديث الان` "
-        )
+        return await event.respond(f"⌔ :  لتحديث سورس آيس ارسل : `.تحديث الان` ")
 
     if force_update:
         await event.edit(

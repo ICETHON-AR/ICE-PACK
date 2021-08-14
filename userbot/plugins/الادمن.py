@@ -1,18 +1,9 @@
-from asyncio import sleep
-
-from telethon import functions
 from telethon.errors import (
     BadRequestError,
     ImageProcessFailedError,
     PhotoCropSizeSmallError,
 )
-from telethon.errors.rpcerrorlist import UserAdminInvalidError, UserIdInvalidError
-from telethon.tl.functions.channels import (
-    EditAdminRequest,
-    EditBannedRequest,
-    EditPhotoRequest,
-)
-from telethon.tl.functions.users import GetFullUserRequest
+from telethon.tl.functions.channels import EditAdminRequest, EditPhotoRequest
 from telethon.tl.types import (
     ChatAdminRights,
     ChatBannedRights,
@@ -24,9 +15,7 @@ from userbot import ice16
 
 from ..core.logger import logging
 from ..core.managers import edit_delete, edit_or_reply
-from ..helpers import media_type
-from ..helpers.utils import _format, get_user_from_event
-from ..sql_helper.mute_sql import is_muted, mute, unmute
+from ..helpers.utils import get_user_from_event
 from . import BOTLOG, BOTLOG_CHATID
 
 # =================== STRINGS ============
@@ -48,7 +37,7 @@ BANNED_RIGHTS = ChatBannedRights(
     send_inline=True,
     embed_links=True,
 )
-#admin plugin for  ice16
+# admin plugin for  ice16
 UNBAN_RIGHTS = ChatBannedRights(
     until_date=None,
     send_messages=None,
@@ -64,7 +53,7 @@ LOGS = logging.getLogger(__name__)
 MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=True)
 UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
-plugin_category = "aadmin" 
+plugin_category = "aadmin"
 # ================================================
 
 
@@ -144,7 +133,7 @@ async def set_group_photo(event):  # sourcery no-metrics
     },
     groups_only=True,
     require_admin=True,
-)#admin plugin for  ice16
+)  # admin plugin for  ice16
 async def promote(event):
     "⌔︙ لـرفع مستـخدم مشـرف في الـكروب"
     new_rights = ChatAdminRights(
@@ -217,6 +206,8 @@ async def demote(event):
             \nالمعرف: [{user.first_name}](tg://user?id={user.id})\
             \nالدردشه: {event.chat.title}(`{event.chat_id}`)",
         )
+
+
 @ice16.ar_cmd(
     pattern="طرد(?:\s|$)([\s\S]*)",
     command=("طرد", plugin_category),
@@ -247,4 +238,6 @@ async def endmute(event):
             f"⌔︙ الـمستخدم [{user.first_name}](tg://user?id={user.id})\n ⌔︙ تـم طرده بنجاح ✅ \n⌔︙ السـبب : {reason}"
         )
     else:
-        await catevent.edit(f"⌔︙ الـمستخدم [{user.first_name}](tg://user?id={user.id})\n ⌔︙ تـم طرده بنجاح ✅ ")
+        await catevent.edit(
+            f"⌔︙ الـمستخدم [{user.first_name}](tg://user?id={user.id})\n ⌔︙ تـم طرده بنجاح ✅ "
+        )

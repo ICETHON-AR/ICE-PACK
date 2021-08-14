@@ -1,4 +1,3 @@
-import asyncio
 import base64
 import io
 import os
@@ -6,7 +5,6 @@ from pathlib import Path
 
 from ShazamAPI import Shazam
 from telethon import types
-from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from validators.url import url
 
@@ -130,7 +128,7 @@ async def delete_messages(event, chat, from_message):
     },
 )
 async def _(event):
-    "⌔︙ للبحث عن فيديوات أغاني  "
+    "⌔︙ للبحث عن فيديوات أغاني"
     reply_to_id = await reply_id(event)
     reply = await event.get_reply_message()
     if event.pattern_match.group(1):
@@ -141,7 +139,9 @@ async def _(event):
     else:
         return await edit_or_reply(event, "**⌔︙ يجـب وضـع  الأمر وبجانبه إسم الأغنية  ")
     cat = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    catevent = await edit_or_reply(event, "**⌔︙ لقـد وجدت الفيديو المطلوب إنتظر قليلا  ")
+    catevent = await edit_or_reply(
+        event, "**⌔︙ لقـد وجدت الفيديو المطلوب إنتظر قليلا  "
+    )
     video_link = await yt_search(str(query))
     if not url(video_link):
         return await catevent.edit(
@@ -203,7 +203,7 @@ async def _(event):
     },
 )
 async def shazamcmd(event):
-    " للـبحث عن اغنـية."
+    "للـبحث عن اغنـية."
     reply = await event.get_reply_message()
     mediatype = media_type(reply)
     if not reply or not mediatype or mediatype not in ["Voice", "Audio"]:

@@ -8,7 +8,7 @@ from telethon.errors import UserIsBlockedError
 from telethon.events import CallbackQuery, StopPropagation
 from telethon.utils import get_display_name
 
-from userbot import Config, ICE16
+from userbot import ICE16, Config
 
 from ..core import check_owner, pool
 from ..core.logger import logging
